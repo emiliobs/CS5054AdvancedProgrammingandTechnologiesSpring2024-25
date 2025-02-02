@@ -32,9 +32,8 @@ public class AddNumberUI extends javax.swing.JFrame
     {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
+        lblSimbol = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtFirstNumber = new javax.swing.JTextField();
@@ -42,24 +41,27 @@ public class AddNumberUI extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
-        btnAddition = new javax.swing.JButton();
+        txtSubtraction = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnAddition = new javax.swing.JButton();
+        btnDivision = new javax.swing.JButton();
+        txtMultiplication = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        lblSimbols = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 255, 255));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel1.setText("ADD NUMBER SYSTEM");
-
         jSeparator1.setBackground(new java.awt.Color(255, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(255, 0, 0));
         jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 5, true));
 
-        jPanel2.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 3, true), "Enter Numbers:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(255, 0, 0)), "Enter Numbers", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(255, 0, 0))); // NOI18N
+        lblSimbol.setBackground(new java.awt.Color(0, 255, 255));
+        lblSimbol.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 3, true), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(255, 0, 0)), "Add Number System.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(255, 0, 0))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
@@ -86,8 +88,9 @@ public class AddNumberUI extends javax.swing.JFrame
 
         txtTotal.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
 
+        btnClear.setBackground(new java.awt.Color(255, 0, 0));
         btnClear.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        btnClear.setForeground(new java.awt.Color(255, 51, 51));
+        btnClear.setForeground(new java.awt.Color(0, 255, 255));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener()
         {
@@ -97,19 +100,21 @@ public class AddNumberUI extends javax.swing.JFrame
             }
         });
 
-        btnAddition.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        btnAddition.setForeground(new java.awt.Color(255, 51, 51));
-        btnAddition.setText("Addition");
-        btnAddition.addActionListener(new java.awt.event.ActionListener()
+        txtSubtraction.setBackground(new java.awt.Color(255, 0, 0));
+        txtSubtraction.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        txtSubtraction.setForeground(new java.awt.Color(0, 255, 255));
+        txtSubtraction.setText("Subtraction");
+        txtSubtraction.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                btnAdditionActionPerformed(evt);
+                txtSubtractionActionPerformed(evt);
             }
         });
 
+        btnExit.setBackground(new java.awt.Color(255, 0, 0));
         btnExit.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(255, 51, 51));
+        btnExit.setForeground(new java.awt.Color(0, 255, 255));
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener()
         {
@@ -119,49 +124,146 @@ public class AddNumberUI extends javax.swing.JFrame
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(btnAddition))
-                .addGap(68, 68, 68)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnClear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                        .addComponent(btnExit))
-                    .addComponent(txtTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                    .addComponent(txtSecondNumber)
-                    .addComponent(txtFirstNumber))
-                .addContainerGap(147, Short.MAX_VALUE))
+        btnAddition.setBackground(new java.awt.Color(255, 0, 0));
+        btnAddition.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnAddition.setForeground(new java.awt.Color(0, 255, 255));
+        btnAddition.setText("Addition");
+        btnAddition.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAdditionActionPerformed(evt);
+            }
+        });
+
+        btnDivision.setBackground(new java.awt.Color(255, 0, 0));
+        btnDivision.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnDivision.setForeground(new java.awt.Color(0, 255, 255));
+        btnDivision.setText("/");
+        btnDivision.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnDivisionActionPerformed(evt);
+            }
+        });
+
+        txtMultiplication.setBackground(new java.awt.Color(255, 0, 0));
+        txtMultiplication.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        txtMultiplication.setForeground(new java.awt.Color(0, 255, 255));
+        txtMultiplication.setText("*");
+        txtMultiplication.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtMultiplicationActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblSimbols.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        lblSimbols.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout lblSimbolLayout = new javax.swing.GroupLayout(lblSimbol);
+        lblSimbol.setLayout(lblSimbolLayout);
+        lblSimbolLayout.setHorizontalGroup(
+            lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblSimbolLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnAddition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(txtSubtraction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lblSimbolLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(txtMultiplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnDivision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(22, 22, 22))
+                    .addGroup(lblSimbolLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel5)
+                        .addContainerGap(44, Short.MAX_VALUE))))
+            .addGroup(lblSimbolLayout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lblSimbolLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(84, 84, 84)
+                        .addComponent(txtFirstNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(lblSimbolLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(54, 54, 54)
+                        .addComponent(txtSecondNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblSimbolLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSimbols, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(260, 260, 260))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        lblSimbolLayout.setVerticalGroup(
+            lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblSimbolLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtFirstNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSimbols, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSecondNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
-                    .addComponent(btnExit)
-                    .addComponent(btnAddition))
-                .addGap(31, 31, 31))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAddition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSubtraction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDivision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtMultiplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(lblSimbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(22, 22, 22))
+        );
+
+        jPanel3.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 4, true));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel1.setText("CALCULATOR.");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(302, 302, 302)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,27 +271,23 @@ public class AddNumberUI extends javax.swing.JFrame
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 884, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(272, 272, 272))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(28, 28, 28)))))
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator1)
+                    .addComponent(lblSimbol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(lblSimbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,10 +304,73 @@ public class AddNumberUI extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSecondNumberActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSecondNumberActionPerformed
-    {//GEN-HEADEREND:event_txtSecondNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSecondNumberActionPerformed
+    private void txtMultiplicationActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtMultiplicationActionPerformed
+    {//GEN-HEADEREND:event_txtMultiplicationActionPerformed
+        if (txtFirstNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a First Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtFirstNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a valid Number in First Number.");
+            return;
+        }
+
+        if (txtSecondNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a Second Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtSecondNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Number in Second Number.");
+            return;
+        }
+
+        double firstNumber = Double.parseDouble(txtFirstNumber.getText());
+
+        double secondNumber = Double.parseDouble(txtSecondNumber.getText());
+        double total = (firstNumber * secondNumber);
+        txtTotal.setText(String.valueOf(total));
+        lblSimbols.setText(" * ");
+    }//GEN-LAST:event_txtMultiplicationActionPerformed
+
+    private void btnDivisionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnDivisionActionPerformed
+    {//GEN-HEADEREND:event_btnDivisionActionPerformed
+        if (txtFirstNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a First Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtFirstNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a valid Number in First Number.");
+            return;
+        }
+
+        if (txtSecondNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a Second Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtSecondNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Number in Second Number.");
+            return;
+        }
+
+        double firstNumber = Double.parseDouble(txtFirstNumber.getText());
+
+        double secondNumber = Double.parseDouble(txtSecondNumber.getText());
+        double total = (firstNumber / secondNumber);
+        txtTotal.setText(String.valueOf(total));
+        lblSimbols.setText(" / ");
+    }//GEN-LAST:event_btnDivisionActionPerformed
 
     private void btnAdditionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAdditionActionPerformed
     {//GEN-HEADEREND:event_btnAdditionActionPerformed
@@ -218,48 +379,85 @@ public class AddNumberUI extends javax.swing.JFrame
             JOptionPane.showMessageDialog(null, "Please You must Enter a First Number.");
             return;
         }
-        
+
         if (!IsNumeric(txtFirstNumber.getText()))
         {
             JOptionPane.showMessageDialog(null, "Please Enter a valid Number in First Number.");
-             return;
+            return;
         }
-        
-         if (txtSecondNumber.getText().isEmpty())
+
+        if (txtSecondNumber.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please You must Enter a Second Number.");
             return;
-        }       
-        
-        
+        }
+
         if (!IsNumeric(txtSecondNumber.getText()))
         {
             JOptionPane.showMessageDialog(null, "Please Enter a Valid Number in Second Number.");
             return;
         }
-              
-        double firstNumber = Double.parseDouble(txtFirstNumber.getText());    
-        
+
+        double firstNumber = Double.parseDouble(txtFirstNumber.getText());
+
         double secondNumber = Double.parseDouble(txtSecondNumber.getText());
         double total = (firstNumber + secondNumber);
-        
-        
-        
         txtTotal.setText(String.valueOf(total));
+       lblSimbols.setText(" + ");
     }//GEN-LAST:event_btnAdditionActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExitActionPerformed
+    {//GEN-HEADEREND:event_btnExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtSubtractionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSubtractionActionPerformed
+    {//GEN-HEADEREND:event_txtSubtractionActionPerformed
+        if (txtFirstNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a First Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtFirstNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a valid Number in First Number.");
+            return;
+        }
+
+        if (txtSecondNumber.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please You must Enter a Second Number.");
+            return;
+        }
+
+        if (!IsNumeric(txtSecondNumber.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "Please Enter a Valid Number in Second Number.");
+            return;
+        }
+
+        double firstNumber = Double.parseDouble(txtFirstNumber.getText());
+
+        double secondNumber = Double.parseDouble(txtSecondNumber.getText());
+        double total = (firstNumber - secondNumber);
+        txtTotal.setText(String.valueOf(total));
+        lblSimbols.setText(" - ");
+    }//GEN-LAST:event_txtSubtractionActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnClearActionPerformed
     {//GEN-HEADEREND:event_btnClearActionPerformed
         txtFirstNumber.setText("");
         txtSecondNumber.setText("");
         txtTotal.setText("");
+        lblSimbols.setText("");
+        
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExitActionPerformed
-    {//GEN-HEADEREND:event_btnExitActionPerformed
-        this.dispose();
-        
-    }//GEN-LAST:event_btnExitActionPerformed
+    private void txtSecondNumberActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSecondNumberActionPerformed
+    {//GEN-HEADEREND:event_txtSecondNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSecondNumberActionPerformed
 
     public boolean IsNumeric(String string)
     {
@@ -323,16 +521,22 @@ public class AddNumberUI extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddition;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDivision;
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel lblSimbol;
+    private javax.swing.JLabel lblSimbols;
     private javax.swing.JTextField txtFirstNumber;
+    private javax.swing.JButton txtMultiplication;
     private javax.swing.JTextField txtSecondNumber;
+    private javax.swing.JButton txtSubtraction;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
