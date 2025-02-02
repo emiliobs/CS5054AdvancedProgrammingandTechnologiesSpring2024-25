@@ -263,8 +263,14 @@ public class AddNumberUI extends javax.swing.JFrame
 
     public boolean IsNumeric(String string)
     {
-        return string.matches("^[0-9]+$");
+        return string.matches("-?\\d+(\\.\\d+)?"); // regular expresion with decimal
     }
+
+    
+//    public boolean IsNumeric(String string)
+//    {
+//        return string.matches("^[0-9]+$");
+//    }
     /**
      * @param args the command line arguments
      */

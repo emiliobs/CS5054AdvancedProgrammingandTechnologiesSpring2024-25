@@ -148,11 +148,9 @@
                               <EmptySpace pref="139" max="32767" attributes="0"/>
                               <Component id="btnExit" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtTotal" pref="286" max="32767" attributes="0"/>
-                              <Component id="txtSecondNumber" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtFirstNumber" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtTotal" alignment="1" pref="286" max="32767" attributes="0"/>
+                          <Component id="txtSecondNumber" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFirstNumber" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="147" max="32767" attributes="0"/>
                   </Group>
