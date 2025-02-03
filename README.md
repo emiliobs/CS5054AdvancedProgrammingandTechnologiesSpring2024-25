@@ -6,4 +6,5 @@
 
 
 ## Simple Calcutator GUI 2 - Week 3
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/1c3baa77-87eb-41c4-b8a1-26e95e8740ad)
+
