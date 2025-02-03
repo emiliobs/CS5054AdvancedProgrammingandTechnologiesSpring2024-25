@@ -8,3 +8,5 @@
 ## Simple Calcutator GUI 2 - Week 3
 ![image](https://github.com/user-attachments/assets/1c3baa77-87eb-41c4-b8a1-26e95e8740ad)
 
+## Currency Converter App Woekshop - Week 3
+![image](https://github.com/user-attachments/assets/09340a2c-76af-4565-8eea-d0e4c17e422d)
