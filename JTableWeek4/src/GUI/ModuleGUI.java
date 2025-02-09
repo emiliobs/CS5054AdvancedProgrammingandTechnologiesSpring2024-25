@@ -16,12 +16,20 @@ import javax.swing.table.TableModel;
 public class ModuleGUI extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form ModuleGUI
-     */
+     DefaultTableModel tableModel ;
+     
     public ModuleGUI()
     {
-        initComponents();
+        
+         initComponents();
+         
+         
+        tableModel = new DefaultTableModel(new String[]{"Module Code", "Module Title", "Lecture Room", "Tutorial Room", "Teaching Period"},0);
+        //tableModel = (DefaultTableModel) new DefaultTableModel(new String[]{"Module Code", "Module Title", "Lecture Room", "Tutorial Room", "Teaching Period"}, 0);
+        tbtlModules.setModel(tableModel);
+        //tbtlModules.setModel(tableModel);
+        
+       
         
    }
 
@@ -392,20 +400,25 @@ public class ModuleGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnAddtoTableActionPerformed
         try
         {
-            String moduleCode = txtModuleCode.getText();
-            String moduleTitule = txtModuleTitle.getText();
-            String lectureRoom = txtLectureRoom.getText();
-            String tutorialRoom = txtTutorialRoom.getText();
+            String moduleCode = txtModuleCode.getText().trim();
+            String moduleTitule = txtModuleTitle.getText().trim();
+            String lectureRoom = txtLectureRoom.getText().trim();
+            String tutorialRoom = txtTutorialRoom.getText().trim();
             
             if (moduleCode.isEmpty() || moduleTitule.isEmpty() || lectureRoom.isEmpty() || tutorialRoom.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+                return;
             }
             
-            tbtlModules.addRow
+            
+            tableModel.addRow(new Object[]{moduleCode, moduleTitule, lectureRoom,tutorialRoom});
+            
+            clearFields();
         }
         catch (Exception e)
         {
+            JOptionPane.showMessageDialog(null, "Error" + e.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddtoTableActionPerformed
 
