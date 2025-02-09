@@ -404,6 +404,8 @@ public class ModuleGUI extends javax.swing.JFrame
             String moduleTitule = txtModuleTitle.getText().trim();
             String lectureRoom = txtLectureRoom.getText().trim();
             String tutorialRoom = txtTutorialRoom.getText().trim();
+            String selectedPeriod = getSelectedPeriod();
+            
             
             if (moduleCode.isEmpty() || moduleTitule.isEmpty() || lectureRoom.isEmpty() || tutorialRoom.isEmpty())
             {
@@ -411,8 +413,14 @@ public class ModuleGUI extends javax.swing.JFrame
                 return;
             }
             
+            if (selectedPeriod == null)
+            {
+                JOptionPane.showMessageDialog(null, "Please. You must select a Teaching Period.");
+                return;
+            }
             
-            tableModel.addRow(new Object[]{moduleCode, moduleTitule, lectureRoom,tutorialRoom});
+            
+            tableModel.addRow(new Object[]{moduleCode, moduleTitule, lectureRoom,tutorialRoom, selectedPeriod});
             
             clearFields();
         }
@@ -429,8 +437,30 @@ public class ModuleGUI extends javax.swing.JFrame
         txtLectureRoom.setText("");
         txtModuleTitle.setText("");
         txtTutorialRoom.setText("");
+        buttonGroup1.clearSelection();
     }
     
+     private String getSelectedPeriod()
+    {
+        if (rbAutumn.isSelected())
+        {
+            return "Autumn";
+        }
+        else if(rbSpring.isSelected())
+        {
+            return "Spring";
+        }
+        else if(rbYearLong.isSelected())
+        {
+            return "Year Long";
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+        
     /**
      * @param args the command line arguments
      */
@@ -507,5 +537,6 @@ public class ModuleGUI extends javax.swing.JFrame
     private javax.swing.JTextField txtTutorialRoom;
     // End of variables declaration//GEN-END:variables
 
+  
 
 }

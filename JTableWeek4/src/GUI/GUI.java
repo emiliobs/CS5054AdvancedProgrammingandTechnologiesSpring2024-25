@@ -314,6 +314,7 @@ public class GUI extends javax.swing.JFrame
             String telNumber = txtTelNumber.getText();
             String address = txtAddress.getText();
             
+            
             String[] name = {firstName,  surname, telNumber, address};
             int rowCount = jTModules.getRowCount();
             int columnCount = jTModules.getColumnCount();
@@ -447,4 +448,6 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextField txtSurname;
     private javax.swing.JTextField txtTelNumber;
     // End of variables declaration//GEN-END:variables
+
+ 
 }
