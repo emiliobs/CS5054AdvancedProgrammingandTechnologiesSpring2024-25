@@ -9,5 +9,5 @@
 ## Currency Converter App Woekshop - Week 3
 ![image](https://github.com/user-attachments/assets/09340a2c-76af-4565-8eea-d0e4c17e422d)
 
-## Module Table GUI App - Week 3, Workshop 4
+## Module Table GUI App - Week 4, Workshop 4
 ![image](https://github.com/user-attachments/assets/66cdf343-f6c9-408d-af8c-3015785f1045)
