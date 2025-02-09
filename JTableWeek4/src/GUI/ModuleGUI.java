@@ -4,6 +4,11 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Emilio
@@ -17,7 +22,8 @@ public class ModuleGUI extends javax.swing.JFrame
     public ModuleGUI()
     {
         initComponents();
-    }
+        
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,14 +77,14 @@ public class ModuleGUI extends javax.swing.JFrame
         tbtlModules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String []
             {
-                "Module Code", "Module Title", "Lecture Room", "Tutorial Room"
+                "Module Code", "Module Title", "Lecture Room", "Tutorial Room", "Period"
             }
         ));
         jScrollPane1.setViewportView(tbtlModules);
@@ -138,11 +144,25 @@ public class ModuleGUI extends javax.swing.JFrame
         btmClear.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         btmClear.setForeground(new java.awt.Color(255, 0, 0));
         btmClear.setText("Clear");
+        btmClear.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btmClearActionPerformed(evt);
+            }
+        });
 
         btnAddtoTable.setBackground(new java.awt.Color(0, 255, 255));
         btnAddtoTable.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         btnAddtoTable.setForeground(new java.awt.Color(255, 0, 0));
         btnAddtoTable.setText("Add to Table");
+        btnAddtoTable.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnAddtoTableActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -244,7 +264,7 @@ public class ModuleGUI extends javax.swing.JFrame
                         .addComponent(rbSpring)
                         .addGap(45, 45, 45)
                         .addComponent(rbYearLong, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43))
+                        .addGap(52, 52, 52))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtLectureRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
@@ -253,7 +273,7 @@ public class ModuleGUI extends javax.swing.JFrame
                             .addComponent(txtModuleTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(31, 31, 31))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,54 +383,89 @@ public class ModuleGUI extends javax.swing.JFrame
        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void btmClearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btmClearActionPerformed
+    {//GEN-HEADEREND:event_btmClearActionPerformed
+        clearFields();
+    }//GEN-LAST:event_btmClearActionPerformed
+
+    private void btnAddtoTableActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddtoTableActionPerformed
+    {//GEN-HEADEREND:event_btnAddtoTableActionPerformed
+        try
+        {
+            String moduleCode = txtModuleCode.getText();
+            String moduleTitule = txtModuleTitle.getText();
+            String lectureRoom = txtLectureRoom.getText();
+            String tutorialRoom = txtTutorialRoom.getText();
+            
+            if (moduleCode.isEmpty() || moduleTitule.isEmpty() || lectureRoom.isEmpty() || tutorialRoom.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+            }
+            
+            tbtlModules.addRow
+        }
+        catch (Exception e)
+        {
+        }
+    }//GEN-LAST:event_btnAddtoTableActionPerformed
+
+        private void clearFields()
+    {
+        
+        txtModuleCode.setText("");
+        txtLectureRoom.setText("");
+        txtModuleTitle.setText("");
+        txtTutorialRoom.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }
-        catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new ModuleGUI().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[])
+//    {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try
+//        {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+//            {
+//                if ("Nimbus".equals(info.getName()))
+//                {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        }
+//        catch (ClassNotFoundException ex)
+//        {
+//            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (InstantiationException ex)
+//        {
+//            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (IllegalAccessException ex)
+//        {
+//            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        catch (javax.swing.UnsupportedLookAndFeelException ex)
+//        {
+//            java.util.logging.Logger.getLogger(ModuleGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable()
+//        {
+//            public void run()
+//            {
+//                new ModuleGUI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmClear;
@@ -438,4 +493,6 @@ public class ModuleGUI extends javax.swing.JFrame
     private javax.swing.JTextField txtModuleTitle;
     private javax.swing.JTextField txtTutorialRoom;
     // End of variables declaration//GEN-END:variables
+
+
 }
