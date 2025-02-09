@@ -10,4 +10,5 @@
 ![image](https://github.com/user-attachments/assets/09340a2c-76af-4565-8eea-d0e4c17e422d)
 
 ## Module Table GUI App - Week 4, Workshop 4
-![image](https://github.com/user-attachments/assets/66cdf343-f6c9-408d-af8c-3015785f1045)
+![image](https://github.com/user-attachments/assets/55615c02-bbfe-4b36-9861-5b4ca648c573)
+
