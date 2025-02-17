@@ -16,6 +16,9 @@ public class CalculatorGUI extends javax.swing.JFrame
     public CalculatorGUI()
     {
         initComponents();
+        
+        
+        
     }
 
     /**
@@ -124,11 +127,11 @@ public class CalculatorGUI extends javax.swing.JFrame
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtAmount2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAmount1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(txtAmount2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtAmount1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(36, 36, 36))
         );
         jPanel3Layout.setVerticalGroup(
@@ -410,9 +413,7 @@ public class CalculatorGUI extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,11 +442,24 @@ public class CalculatorGUI extends javax.swing.JFrame
 
     private void chkDolarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkDolarActionPerformed
     {//GEN-HEADEREND:event_chkDolarActionPerformed
+       
+         if (chkDolar.isSelected())
+        {
+            chkPound.setSelected(false);
+        }
+        
         unit = "$";
     }//GEN-LAST:event_chkDolarActionPerformed
 
     private void chkPoundActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkPoundActionPerformed
     {//GEN-HEADEREND:event_chkPoundActionPerformed
+       
+        
+         if (chkPound.isSelected())
+        {
+            chkDolar.setSelected(false);
+        }
+        
         unit = "£";
     }//GEN-LAST:event_chkPoundActionPerformed
 
@@ -454,6 +468,9 @@ public class CalculatorGUI extends javax.swing.JFrame
         double amount1 = Double.parseDouble(txtAmount1.getText());
         double amount2 = Double.parseDouble(txtAmount2.getText());
         double sum = (amount1 + amount2);
+        
+        selectCheckBox();
+             
        double result = sum + status * Double.parseDouble(jComboBox1.getSelectedItem().toString());
        txtResult.setText(String.valueOf(result)  +  unit);
         
@@ -507,6 +524,12 @@ public class CalculatorGUI extends javax.swing.JFrame
         
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private void selectCheckBox()
+    {
+        
+      
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -585,4 +608,8 @@ public class CalculatorGUI extends javax.swing.JFrame
     private javax.swing.JTextField txtAmount2;
     private javax.swing.JTextField txtResult;
     // End of variables declaration//GEN-END:variables
+
+  
+
+    
 }

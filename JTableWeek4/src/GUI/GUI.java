@@ -47,7 +47,7 @@ public class GUI extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
         lblSimbols = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTModules = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         txtTelNumber = new javax.swing.JTextField();
 
@@ -152,7 +152,7 @@ public class GUI extends javax.swing.JFrame
         lblSimbols.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         lblSimbols.setForeground(new java.awt.Color(255, 0, 0));
 
-        jTModules.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
 
@@ -162,7 +162,7 @@ public class GUI extends javax.swing.JFrame
                 "First Name", "Surname", "Tel Number", "Address"
             }
         ));
-        jScrollPane1.setViewportView(jTModules);
+        jScrollPane1.setViewportView(jTable);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
@@ -309,6 +309,7 @@ public class GUI extends javax.swing.JFrame
 
         try
         {
+            String s;
             String firstName = txtFirstName.getText();
             String surname = txtSurname.getText();
             String telNumber = txtTelNumber.getText();
@@ -316,38 +317,44 @@ public class GUI extends javax.swing.JFrame
             
             
             String[] name = {firstName,  surname, telNumber, address};
-            int rowCount = jTModules.getRowCount();
-            int columnCount = jTModules.getColumnCount();
+            int rowCount = jTable.getRowCount();
+            int columnCount = jTable.getColumnCount();
             int nextRow = 0;
             boolean emptyRowFlag = false;
-            String s;
             
-            do
-            {                
-                s = (String) jTModules.getValueAt(nextRow, 0);
-                if (s != null && s.length() != 0)
-                {
-                    nextRow++;
-                }
-                else
-                {
-                    emptyRowFlag = true;
-                }
-                
-                
-            }
-            while (nextRow < rowCount && !emptyRowFlag);
+            System.out.println(rowCount);
+            System.out.println(columnCount);
             
-            
-            for (int i = 0; i < columnCount; i++)
+          //  while (nextRow <= 4 )
+                    //&& !emptyRowFlag)
+           // {
+                 s = jTable.getValueAt(nextRow, 0).toString();
+                 System.out.println(s);
+                 
+                  if (s != null && s.length() != 0)
+               {
+                 nextRow++;
+             }
+             else
+              {
+                emptyRowFlag = true;
+             }
+                  
+                  
+                  for (int i = 0; i < columnCount; i++)
                 {
-                    jTModules.setValueAt(name[i],nextRow, i);
+                    jTable.setValueAt(name[i],nextRow, i);
                 }
+                  
+          // }
+            
+           
+            
             
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Error" + e.getMessage());
         }
 
         //String[] value = {"Emilio", "Barrera","5654321","eabs"};
@@ -440,7 +447,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTModules;
+    private javax.swing.JTable jTable;
     private javax.swing.JPanel lblSimbol;
     private javax.swing.JLabel lblSimbols;
     private javax.swing.JTextField txtAddress;
