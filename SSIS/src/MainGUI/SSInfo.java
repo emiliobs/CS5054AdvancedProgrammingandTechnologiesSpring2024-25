@@ -32,6 +32,9 @@ public class SSInfo extends javax.swing.JFrame
         };
         TableModel = new DefaultTableModel(columns, 0);
         tblSofaDetails.setModel(TableModel);
+        buttonGroup1.add(rbBlueColor);
+        buttonGroup1.add(rbRedColor);
+        buttonGroup1.add(rbYellowColor);
 
     }
 
@@ -68,6 +71,15 @@ public class SSInfo extends javax.swing.JFrame
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSofaDetails = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        txtSearchByPrice = new javax.swing.JTextField();
+        btnSearchByPrice = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        cbSearchCategory = new javax.swing.JComboBox<>();
+        btnSearchByCategory = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -83,7 +95,7 @@ public class SSInfo extends javax.swing.JFrame
         jPanel2.setBackground(new java.awt.Color(0, 255, 255));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 50)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Sofa Shop Information System.");
 
@@ -92,14 +104,14 @@ public class SSInfo extends javax.swing.JFrame
         jSeparator1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true));
 
         jPanel3.setBackground(new java.awt.Color(51, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true), "Sofa Data.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 0, 0)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 51, 51))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true), "Add a New Sofa.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 0, 0)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 51, 51))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Sofa Id:");
 
         txtSofaId.setBackground(new java.awt.Color(0, 255, 255));
-        txtSofaId.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtSofaId.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         txtSofaId.setForeground(new java.awt.Color(255, 0, 0));
         txtSofaId.addActionListener(new java.awt.event.ActionListener()
         {
@@ -109,12 +121,12 @@ public class SSInfo extends javax.swing.JFrame
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("Sofa Name:");
 
         txtSofaName.setBackground(new java.awt.Color(0, 255, 255));
-        txtSofaName.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtSofaName.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         txtSofaName.setForeground(new java.awt.Color(255, 0, 0));
         txtSofaName.addActionListener(new java.awt.event.ActionListener()
         {
@@ -124,15 +136,15 @@ public class SSInfo extends javax.swing.JFrame
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Colour:");
 
-        rbBlueColor.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        rbBlueColor.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         rbBlueColor.setForeground(new java.awt.Color(255, 0, 0));
         rbBlueColor.setText("Blue");
 
-        rbRedColor.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        rbRedColor.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         rbRedColor.setForeground(new java.awt.Color(255, 0, 0));
         rbRedColor.setText("Red");
         rbRedColor.addActionListener(new java.awt.event.ActionListener()
@@ -143,16 +155,16 @@ public class SSInfo extends javax.swing.JFrame
             }
         });
 
-        rbYellowColor.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        rbYellowColor.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         rbYellowColor.setForeground(new java.awt.Color(255, 0, 0));
         rbYellowColor.setText("Yellow");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("Price:");
 
         txtPriice.setBackground(new java.awt.Color(0, 255, 255));
-        txtPriice.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtPriice.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         txtPriice.setForeground(new java.awt.Color(255, 0, 0));
         txtPriice.addActionListener(new java.awt.event.ActionListener()
         {
@@ -162,12 +174,12 @@ public class SSInfo extends javax.swing.JFrame
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("Category:");
 
         cbCategory.setBackground(new java.awt.Color(0, 255, 255));
-        cbCategory.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        cbCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         cbCategory.setForeground(new java.awt.Color(255, 0, 0));
         cbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Beds", "Seater Sofa", "Modular Sofa", " " }));
 
@@ -202,30 +214,33 @@ public class SSInfo extends javax.swing.JFrame
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3))
-                .addGap(45, 45, 45)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSofaName)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(rbRedColor)
-                        .addGap(38, 38, 38)
-                        .addComponent(rbBlueColor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(rbYellowColor))
-                    .addComponent(cbCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSofaId)
-                    .addComponent(txtPriice))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btnAdd)
-                .addGap(64, 64, 64)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(rbRedColor)
+                                .addGap(20, 20, 20)
+                                .addComponent(rbBlueColor)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbYellowColor))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtSofaName, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbCategory, javax.swing.GroupLayout.Alignment.LEADING, 0, 277, Short.MAX_VALUE)
+                                .addComponent(txtSofaId, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(txtPriice, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(btnAdd)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,11 +249,11 @@ public class SSInfo extends javax.swing.JFrame
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtSofaId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSofaName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,7 +267,7 @@ public class SSInfo extends javax.swing.JFrame
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtPriice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnClear))
@@ -283,8 +298,8 @@ public class SSInfo extends javax.swing.JFrame
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 734, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,6 +307,138 @@ public class SSInfo extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        jPanel5.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true), "Searchs Sofas.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 0, 0))); // NOI18N
+
+        jPanel6.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true), "Searchs by Price.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 0, 0))); // NOI18N
+
+        txtSearchByPrice.setBackground(new java.awt.Color(0, 255, 255));
+        txtSearchByPrice.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        txtSearchByPrice.setForeground(new java.awt.Color(255, 0, 0));
+        txtSearchByPrice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtSearchByPriceActionPerformed(evt);
+            }
+        });
+
+        btnSearchByPrice.setBackground(new java.awt.Color(0, 255, 255));
+        btnSearchByPrice.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnSearchByPrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnSearchByPrice.setText("Search Price.");
+        btnSearchByPrice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnSearchByPriceActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel7.setText("Price:");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSearchByPrice)
+                    .addComponent(jLabel7)
+                    .addComponent(txtSearchByPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearchByPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnSearchByPrice)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(0, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 5, true), "Searchs by Category.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 24), new java.awt.Color(255, 0, 0))); // NOI18N
+
+        cbSearchCategory.setBackground(new java.awt.Color(0, 255, 255));
+        cbSearchCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        cbSearchCategory.setForeground(new java.awt.Color(255, 0, 0));
+        cbSearchCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Beds", "Seater Sofa", "Modular Sofa", " " }));
+
+        btnSearchByCategory.setBackground(new java.awt.Color(0, 255, 255));
+        btnSearchByCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnSearchByCategory.setForeground(new java.awt.Color(255, 0, 0));
+        btnSearchByCategory.setText("Search Category.");
+        btnSearchByCategory.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnSearchByCategoryActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel8.setText("Category:");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSearchByCategory)
+                    .addComponent(jLabel8)
+                    .addComponent(cbSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(cbSearchCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnSearchByCategory)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(264, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -303,14 +450,18 @@ public class SSInfo extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(334, 334, 334)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(jLabel1)
+                .addContainerGap(395, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,8 +473,9 @@ public class SSInfo extends javax.swing.JFrame
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -333,14 +485,14 @@ public class SSInfo extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -419,6 +571,43 @@ public class SSInfo extends javax.swing.JFrame
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void btnSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByPriceActionPerformed
+    {//GEN-HEADEREND:event_btnSearchByPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchByPriceActionPerformed
+
+    private void txtSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSearchByPriceActionPerformed
+    {//GEN-HEADEREND:event_txtSearchByPriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchByPriceActionPerformed
+
+    private void btnSearchByCategoryActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByCategoryActionPerformed
+    {//GEN-HEADEREND:event_btnSearchByCategoryActionPerformed
+        // Metho to search for sofas by category
+        String category = cbSearchCategory.getSelectedItem().toString();
+        ArrayList<String> foundSofas = new ArrayList<>();
+
+        for (Sofa sofa : sofaList)
+        {
+            if (sofa.getCategory().equals(category))
+            {
+                foundSofas.add(sofa.getSofaName());
+            }
+        }
+
+        if (foundSofas.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "No sofas available in this Category.");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Available sofas in " + category + " : " + String.join(", ", foundSofas));
+
+        }
+
+
+    }//GEN-LAST:event_btnSearchByCategoryActionPerformed
+
     // Add a new sofa tot he table
     private void addNewSofa()
     {
@@ -457,21 +646,19 @@ public class SSInfo extends javax.swing.JFrame
             // Create new sofa object
             Sofa newSofa = new Sofa(sofaID, category, sofaName, color, price);
             sofaList.add(newSofa); // Add to ArrayList
-            
+
             //Add sofa to the table
             TableModel.addRow(new Object[]
             {
                 newSofa.getSofaID(), newSofa.getCategory(), newSofa.getSofaName(), newSofa.getColor(), newSofa.getPrice()
             });
-            
+
             JOptionPane.showMessageDialog(null, "New sofa added successfully.");
-            
+
             // Clear input fields
             clearFileds();
 
-            
             // Clear input fields
-            
         }
         catch (Exception e)
         {
@@ -482,24 +669,24 @@ public class SSInfo extends javax.swing.JFrame
     // Methos to Get the selected color from the radio buttons
     private String getSelectedColor()
     {
-         if (rbRedColor.isSelected())
+        if (rbRedColor.isSelected())
         {
-               return "Red";
+            return "Red";
         }
-         else if(rbBlueColor.isSelected())
-         {
-             return "Blue";
-         }
-         else if(rbYellowColor.isSelected())
-         {
-             return "Yellow";
-         }
-         else
-         {
-             return " ";
-         }
+        else if (rbBlueColor.isSelected())
+        {
+            return "Blue";
+        }
+        else if (rbYellowColor.isSelected())
+        {
+            return "Yellow";
+        }
+        else
+        {
+            return " ";
+        }
     }
-    
+
     private void clearFileds()
     {
         txtPriice.setText("");
@@ -508,7 +695,6 @@ public class SSInfo extends javax.swing.JFrame
         buttonGroup1.clearSelection();
         cbCategory.setSelectedIndex(0);
     }
-    
 
     /**
      * @param args the command line arguments
@@ -565,14 +751,19 @@ public class SSInfo extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnSearchByCategory;
+    private javax.swing.JButton btnSearchByPrice;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbCategory;
+    private javax.swing.JComboBox<String> cbSearchCategory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -582,6 +773,9 @@ public class SSInfo extends javax.swing.JFrame
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -590,9 +784,9 @@ public class SSInfo extends javax.swing.JFrame
     private javax.swing.JRadioButton rbYellowColor;
     private javax.swing.JTable tblSofaDetails;
     private javax.swing.JTextField txtPriice;
+    private javax.swing.JTextField txtSearchByPrice;
     private javax.swing.JTextField txtSofaId;
     private javax.swing.JTextField txtSofaName;
     // End of variables declaration//GEN-END:variables
 
-    
 }
