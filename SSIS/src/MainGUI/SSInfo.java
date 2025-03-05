@@ -95,7 +95,8 @@ public class SSInfo extends javax.swing.JFrame
         MenuItemOPenFile = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         MenuItemExit = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuHelp = new javax.swing.JMenu();
+        menuitemUserGuide = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SSIS");
@@ -532,8 +533,27 @@ public class SSInfo extends javax.swing.JFrame
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Help");
-        jMenuBar1.add(jMenu2);
+        menuHelp.setText("Help");
+        menuHelp.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                menuHelpActionPerformed(evt);
+            }
+        });
+
+        menuitemUserGuide.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuitemUserGuide.setText("User Guide");
+        menuitemUserGuide.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                menuitemUserGuideActionPerformed(evt);
+            }
+        });
+        menuHelp.add(menuitemUserGuide);
+
+        jMenuBar1.add(menuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -684,6 +704,38 @@ public class SSInfo extends javax.swing.JFrame
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_MenuItemOPenFileActionPerformed
+
+    private void menuHelpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_menuHelpActionPerformed
+    {//GEN-HEADEREND:event_menuHelpActionPerformed
+       
+    }//GEN-LAST:event_menuHelpActionPerformed
+
+    private void menuitemUserGuideActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_menuitemUserGuideActionPerformed
+    {//GEN-HEADEREND:event_menuitemUserGuideActionPerformed
+         try
+        {
+
+            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\SofaUserGuide.pdf");
+//            //File archivo = new File("C:\\\\Test\\\\emilioAtenas.jpg");
+//            
+            if (archivo.exists())
+            {
+                Desktop.getDesktop().open(archivo);
+            }
+            else
+            {
+                System.out.println("El archivo no existe.");
+            }
+
+//            Runtime.getRuntime().exec("rundll32 url.dll,  FileProtocolHandler" + "C:\\Test\\emilioAtenas.jpg");
+//            
+//            JOptionPane.showMessageDialog(null, "The file  was open successfully!");
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_menuitemUserGuideActionPerformed
 
     // Add a new sofa tot he table
     private void addNewSofa()
@@ -879,7 +931,6 @@ public class SSInfo extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -891,6 +942,8 @@ public class SSInfo extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuitemUserGuide;
     private javax.swing.JRadioButton rbBlueColor;
     private javax.swing.JRadioButton rbRedColor;
     private javax.swing.JRadioButton rbYellowColor;
