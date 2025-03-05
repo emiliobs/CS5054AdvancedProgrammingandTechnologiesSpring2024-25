@@ -12,3 +12,8 @@
 ## Module Table GUI App - Week 4, Workshop 4
 ![image](https://github.com/user-attachments/assets/55615c02-bbfe-4b36-9861-5b4ca648c573)
 
+## Sofa Shop Information System (SSIS)
+
+![image](https://github.com/user-attachments/assets/272c10a0-ddb2-4a09-879c-3e94092a9655)
+
+
