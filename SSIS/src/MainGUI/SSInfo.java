@@ -5,6 +5,8 @@
 package MainGUI;
 
 import Models.Sofa;
+import java.awt.Desktop;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -33,12 +35,12 @@ public class SSInfo extends javax.swing.JFrame
         {
             "Sofa ID", "Category", "Sofa Name", "Color", "Price"
         };
-        
+
         TableModel = new DefaultTableModel(columns, 0);
-        
+
         preloadSofas();
         updateTable();
-        
+
         tblSofaDetails.setModel(TableModel);
         buttonGroup1.add(rbBlueColor);
         buttonGroup1.add(rbRedColor);
@@ -658,7 +660,29 @@ public class SSInfo extends javax.swing.JFrame
 
     private void MenuItemOPenFileActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MenuItemOPenFileActionPerformed
     {//GEN-HEADEREND:event_MenuItemOPenFileActionPerformed
-         
+        try
+        {
+
+            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\sofas.csv");
+//            //File archivo = new File("C:\\\\Test\\\\emilioAtenas.jpg");
+//            
+            if (archivo.exists())
+            {
+                Desktop.getDesktop().open(archivo);
+            }
+            else
+            {
+                System.out.println("El archivo no existe.");
+            }
+
+//            Runtime.getRuntime().exec("rundll32 url.dll,  FileProtocolHandler" + "C:\\Test\\emilioAtenas.jpg");
+//            
+//            JOptionPane.showMessageDialog(null, "The file  was open successfully!");
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
     }//GEN-LAST:event_MenuItemOPenFileActionPerformed
 
     // Add a new sofa tot he table
@@ -751,7 +775,6 @@ public class SSInfo extends javax.swing.JFrame
         cbSearchCategory.setSelectedItem(0);
     }
 
-    
     // Preload sofa Data
     private void preloadSofas()
     {
@@ -778,7 +801,10 @@ public class SSInfo extends javax.swing.JFrame
         TableModel.setRowCount(0);
         for (Sofa sofa : sofaList)
         {
-            TableModel.addRow(new Object[]{sofa.getSofaID(), sofa.getCategory(), sofa.getSofaName(), sofa.getColor(), sofa.getPrice()});
+            TableModel.addRow(new Object[]
+            {
+                sofa.getSofaID(), sofa.getCategory(), sofa.getSofaName(), sofa.getColor(), sofa.getPrice()
+            });
         }
     }
 
