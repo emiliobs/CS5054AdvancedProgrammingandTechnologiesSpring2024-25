@@ -6,6 +6,9 @@ package MainGUI;
 
 import Models.Sofa;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +22,7 @@ public class SSInfo extends javax.swing.JFrame
 {
 
     private ArrayList<Sofa> sofaList = new ArrayList<>(); // Array to store sofa details
-    private int sofaCount = 0;  //Track the number of sofas added
+    private int sofaCount = 0;  //Track the number of sofas added    
     DefaultTableModel TableModel;
 
     public SSInfo()
@@ -30,7 +33,12 @@ public class SSInfo extends javax.swing.JFrame
         {
             "Sofa ID", "Category", "Sofa Name", "Color", "Price"
         };
+        
         TableModel = new DefaultTableModel(columns, 0);
+        
+        preloadSofas();
+        updateTable();
+        
         tblSofaDetails.setModel(TableModel);
         buttonGroup1.add(rbBlueColor);
         buttonGroup1.add(rbRedColor);
@@ -82,9 +90,9 @@ public class SSInfo extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MenuItemOPenFile = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        MenuItemExit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -181,7 +189,7 @@ public class SSInfo extends javax.swing.JFrame
         cbCategory.setBackground(new java.awt.Color(0, 255, 255));
         cbCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         cbCategory.setForeground(new java.awt.Color(255, 0, 0));
-        cbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Beds", "Seater Sofa", "Modular Sofa", " " }));
+        cbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Bed", "Seater Sofa", "Modular Sofa", " " }));
 
         btnAdd.setBackground(new java.awt.Color(0, 255, 255));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -329,7 +337,7 @@ public class SSInfo extends javax.swing.JFrame
         btnSearchByPrice.setBackground(new java.awt.Color(0, 255, 255));
         btnSearchByPrice.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnSearchByPrice.setForeground(new java.awt.Color(255, 0, 0));
-        btnSearchByPrice.setText("Search Price.");
+        btnSearchByPrice.setText("Search.");
         btnSearchByPrice.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -372,12 +380,12 @@ public class SSInfo extends javax.swing.JFrame
         cbSearchCategory.setBackground(new java.awt.Color(0, 255, 255));
         cbSearchCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         cbSearchCategory.setForeground(new java.awt.Color(255, 0, 0));
-        cbSearchCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Beds", "Seater Sofa", "Modular Sofa", " " }));
+        cbSearchCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Armchair Sofa", "Loveseat Sofa", "Sofa Bed", "Seater Sofa", "Modular Sofa", " " }));
 
         btnSearchByCategory.setBackground(new java.awt.Color(0, 255, 255));
         btnSearchByCategory.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnSearchByCategory.setForeground(new java.awt.Color(255, 0, 0));
-        btnSearchByCategory.setText("Search Category.");
+        btnSearchByCategory.setText("Available Sofa.");
         btnSearchByCategory.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -395,7 +403,7 @@ public class SSInfo extends javax.swing.JFrame
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearchByCategory)
                     .addComponent(jLabel8)
@@ -461,7 +469,7 @@ public class SSInfo extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(488, 488, 488)
                 .addComponent(jLabel1)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,7 +493,7 @@ public class SSInfo extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,21 +505,28 @@ public class SSInfo extends javax.swing.JFrame
 
         jMenu1.setText("File");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setText("Open File");
-        jMenu1.add(jMenuItem1);
-        jMenu1.add(jSeparator2);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener()
+        MenuItemOPenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        MenuItemOPenFile.setText("Open File");
+        MenuItemOPenFile.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jMenuItem2ActionPerformed(evt);
+                MenuItemOPenFileActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(MenuItemOPenFile);
+        jMenu1.add(jSeparator2);
+
+        MenuItemExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        MenuItemExit.setText("Exit");
+        MenuItemExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                MenuItemExitActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemExit);
 
         jMenuBar1.add(jMenu1);
 
@@ -566,14 +581,47 @@ public class SSInfo extends javax.swing.JFrame
         clearFileds();
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem2ActionPerformed
-    {//GEN-HEADEREND:event_jMenuItem2ActionPerformed
+    private void MenuItemExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MenuItemExitActionPerformed
+    {//GEN-HEADEREND:event_MenuItemExitActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_MenuItemExitActionPerformed
 
+    // Method to search for a sofa by proce using Binary Search.
     private void btnSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByPriceActionPerformed
     {//GEN-HEADEREND:event_btnSearchByPriceActionPerformed
-        // TODO add your handling code here:
+        if (txtSearchByPrice.getText().trim().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a Price");
+            return;
+        }
+
+        double targetPrice = Double.parseDouble(txtSearchByPrice.getText().trim());
+        Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice)); // Sort list by Price
+
+        int low = 0;
+        int high = sofaList.size() - 1;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            Sofa midSofa = sofaList.get(mid);
+
+            if (midSofa.getPrice() == targetPrice)
+            {
+                JOptionPane.showMessageDialog(null, "Found: " + midSofa.getCategory() + "  - " + midSofa.getSofaName());
+                return;
+            }
+            else if (midSofa.getPrice() < targetPrice)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "No sofa found with that Price.");
+
     }//GEN-LAST:event_btnSearchByPriceActionPerformed
 
     private void txtSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSearchByPriceActionPerformed
@@ -607,6 +655,11 @@ public class SSInfo extends javax.swing.JFrame
 
 
     }//GEN-LAST:event_btnSearchByCategoryActionPerformed
+
+    private void MenuItemOPenFileActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MenuItemOPenFileActionPerformed
+    {//GEN-HEADEREND:event_MenuItemOPenFileActionPerformed
+         
+    }//GEN-LAST:event_MenuItemOPenFileActionPerformed
 
     // Add a new sofa tot he table
     private void addNewSofa()
@@ -692,8 +745,41 @@ public class SSInfo extends javax.swing.JFrame
         txtPriice.setText("");
         txtSofaId.setText("");
         txtSofaName.setText("");
+        txtSearchByPrice.setText("");
         buttonGroup1.clearSelection();
         cbCategory.setSelectedIndex(0);
+        cbSearchCategory.setSelectedItem(0);
+    }
+
+    
+    // Preload sofa Data
+    private void preloadSofas()
+    {
+        sofaList.add(new Sofa("S01", "Armchair Sofa", "High Back", "Red", 250.0));
+        sofaList.add(new Sofa("S02", "Armchair Sofa", "Wingback", "Blue", 300.0));
+
+        sofaList.add(new Sofa("S03", "Loveseat Sofa", "Modern Loveseat", "Yellow", 400.0));
+        sofaList.add(new Sofa("S04", "Loveseat Sofa", "Classic Loveseat", "Red", 350.0));
+
+        sofaList.add(new Sofa("S05", "Sofa Bed", "Folding Bed", "Blue", 500.0));
+        sofaList.add(new Sofa("S06", "Sofa Bed", "Pull-out Bed", "Yellow", 600.0));
+
+        sofaList.add(new Sofa("S07", "Seater Sofa", "Leather Recliner", "Red", 700.0));
+        sofaList.add(new Sofa("S08", "Seater Sofa", "Fabric Recliner", "Blue", 750.0));
+
+        sofaList.add(new Sofa("S09", "Modular Sofa", "L-Shaped", "Yellow", 900.0));
+        sofaList.add(new Sofa("S10", "Modular Sofa", "U-Shaped", "Red", 950.0));
+        sofaList.add(new Sofa("S11", "Recliner Sofa", "Classic Recliner", "Red", 700.0));
+    }
+
+    // Update Table with data from the Arraylist
+    private void updateTable()
+    {
+        TableModel.setRowCount(0);
+        for (Sofa sofa : sofaList)
+        {
+            TableModel.addRow(new Object[]{sofa.getSofaID(), sofa.getCategory(), sofa.getSofaName(), sofa.getColor(), sofa.getPrice()});
+        }
     }
 
     /**
@@ -749,6 +835,8 @@ public class SSInfo extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemExit;
+    private javax.swing.JMenuItem MenuItemOPenFile;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnSearchByCategory;
@@ -767,8 +855,6 @@ public class SSInfo extends javax.swing.JFrame
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
