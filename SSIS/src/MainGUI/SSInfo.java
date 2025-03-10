@@ -23,28 +23,29 @@ import javax.swing.table.TableModel;
 public class SSInfo extends javax.swing.JFrame
 {
 
+    // Sofa Data and Table Model Declarations
     private ArrayList<Sofa> sofaList = new ArrayList<>(); // Array to store sofa details
-    private int sofaCount = 0;  //Track the number of sofas added    
-    DefaultTableModel TableModel;
+    private int sofaCount = 0; //Track the number of sofas added
+    DefaultTableModel TableModel; // Declare a DefaultTableModel variable named TableModel
 
     public SSInfo()
     {
         initComponents();
 
-        String[] columns =
+        String[] columns = // Declare and initialize a String array named 'columns'
         {
-            "Sofa ID", "Category", "Sofa Name", "Color", "Price"
+            "Sofa ID", "Category", "Sofa Name", "Color", "Price" // Populate the array with column headers for the table
         };
 
-        TableModel = new DefaultTableModel(columns, 0);
+        TableModel = new DefaultTableModel(columns, 0); // Create a new DefaultTableModel with the specified column headers and 0 initial rows.
 
-        preloadSofas();
-        updateTable();
+        preloadSofas(); // Call the preloadSofas() method to populate the sofaList with initial data.
+        updateTable(); // Call the updateTable() method to populate the JTable with data from the sofaList.
 
-        tblSofaDetails.setModel(TableModel);
-        buttonGroup1.add(rbBlueColor);
-        buttonGroup1.add(rbRedColor);
-        buttonGroup1.add(rbYellowColor);
+        tblSofaDetails.setModel(TableModel); // Set the TableModel of the JTable 'tblSofaDetails' to the created TableModel.
+        buttonGroup1.add(rbBlueColor); // Add the 'rbBlueColor' radio button to the 'buttonGroup1' button group.
+        buttonGroup1.add(rbRedColor); // Add the 'rbRedColor' radio button to the 'buttonGroup1' button group.
+        buttonGroup1.add(rbYellowColor); // Add the 'rbYellowColor' radio button to the 'buttonGroup1' button group.
 
     }
 
@@ -618,59 +619,75 @@ public class SSInfo extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPriiceActionPerformed
 
-    // Tab le for sofa Details:
-
+// Table for sofa Details:
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAddActionPerformed
     {//GEN-HEADEREND:event_btnAddActionPerformed
-        addNewSofa();
+        addNewSofa();// Call the addNewSofa() method when the btnAdd button is clicked.
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnClearActionPerformed
     {//GEN-HEADEREND:event_btnClearActionPerformed
-        clearFileds();
+        clearFileds();// Call the clearFileds() method when the btnClear button is clicked.
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void MenuItemExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MenuItemExitActionPerformed
     {//GEN-HEADEREND:event_MenuItemExitActionPerformed
-        this.dispose();
+        this.dispose();// Dispose of the current window (frame) when the MenuItemExit is clicked, effectively closing the application.
     }//GEN-LAST:event_MenuItemExitActionPerformed
 
-    // Method to search for a sofa by proce using Binary Search.
+    // Method to search for a sofa by proce using Binary Search.       
     private void btnSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByPriceActionPerformed
     {//GEN-HEADEREND:event_btnSearchByPriceActionPerformed
-        if (txtSearchByPrice.getText().trim().isEmpty())
+
+        double targetPrice;
+        if (txtSearchByPrice.getText().trim().isEmpty()) // Check if the search price text field is empty
         {
-            JOptionPane.showMessageDialog(null, "Please enter a Price");
+            JOptionPane.showMessageDialog(null, "Please enter a Price"); // Display an error message if the field is empty
+            return; // Exit the method
+        }
+
+        // Validate price input
+        try
+        {
+
+            targetPrice = Double.parseDouble(txtSearchByPrice.getText().trim()); // Parse the entered price as a double
+
+            if (targetPrice <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Price must be greater than zero.");
+                return;
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value.");
             return;
         }
 
-        double targetPrice = Double.parseDouble(txtSearchByPrice.getText().trim());
-        Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice)); // Sort list by Price
+        Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice)); // Sort the sofaList by price in ascending order
 
-        int low = 0;
-        int high = sofaList.size() - 1;
-        while (low <= high)
+        int low = 0; // Initialize the lower bound of the search
+        int high = sofaList.size() - 1; // Initialize the upper bound of the search
+        while (low <= high) // Start the binary search loop
         {
-            int mid = (low + high) / 2;
-            Sofa midSofa = sofaList.get(mid);
+            int mid = (low + high) / 2; // Calculate the middle index
+            Sofa midSofa = sofaList.get(mid); // Get the Sofa object at the middle index
 
-            if (midSofa.getPrice() == targetPrice)
+            if (midSofa.getPrice() == targetPrice) // Check if the middle sofa's price matches the target price
             {
-                JOptionPane.showMessageDialog(null, "Found: " + midSofa.getCategory() + "  - " + midSofa.getSofaName());
-                return;
+                JOptionPane.showMessageDialog(null, "Found: " + midSofa.getCategory() + "  - " + midSofa.getSofaName()); // Display a message with the found sofa's details
+                return; // Exit the method
             }
-            else if (midSofa.getPrice() < targetPrice)
+            else if (midSofa.getPrice() < targetPrice) // If the middle sofa's price is less than the target price
             {
-                low = mid + 1;
+                low = mid + 1; // Update the lower bound to search in the right half
             }
-            else
+            else // If the middle sofa's price is greater than the target price
             {
-                high = mid - 1;
+                high = mid - 1; // Update the upper bound to search in the left half
             }
         }
-
-        JOptionPane.showMessageDialog(null, "No sofa found with that Price.");
-
+        JOptionPane.showMessageDialog(null, "No sofa found with that Price."); // Display a message if no sofa is found
     }//GEN-LAST:event_btnSearchByPriceActionPerformed
 
     private void txtSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSearchByPriceActionPerformed
@@ -680,151 +697,159 @@ public class SSInfo extends javax.swing.JFrame
 
     private void btnSearchByCategoryActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByCategoryActionPerformed
     {//GEN-HEADEREND:event_btnSearchByCategoryActionPerformed
-        // Metho to search for sofas by category
-        String category = cbSearchCategory.getSelectedItem().toString();
-        ArrayList<String> foundSofas = new ArrayList<>();
+        // Method to search for sofas by category
+        String category = cbSearchCategory.getSelectedItem().toString(); // Get the selected category from the combo box.
+        ArrayList<String> foundSofas = new ArrayList<>(); // Create an ArrayList to store the names of found sofas.
 
-        for (Sofa sofa : sofaList)
+        for (Sofa sofa : sofaList) // Iterate through each Sofa object in the sofaList.
         {
-            if (sofa.getCategory().equals(category))
+            if (sofa.getCategory().equals(category)) // Check if the sofa's category matches the selected category.
             {
-                foundSofas.add(sofa.getSofaName());
+                foundSofas.add(sofa.getSofaName()); // If the categories match, add the sofa's name to the foundSofas list.
             }
         }
 
-        if (foundSofas.isEmpty())
+        if (foundSofas.isEmpty()) // Check if no sofas were found in the selected category.
         {
-            JOptionPane.showMessageDialog(null, "No sofas available in this Category.");
+            JOptionPane.showMessageDialog(null, "No sofas available in this Category."); // Display a message if no sofas were found.
         }
-        else
+        else // If sofas were found
         {
-            JOptionPane.showMessageDialog(null, "Available sofas in " + category + " : " + String.join(", ", foundSofas));
-
+            JOptionPane.showMessageDialog(null, "Available sofas in " + category + " : " + String.join(", ", foundSofas)); // Display a message listing the found sofa names.
         }
-
-
     }//GEN-LAST:event_btnSearchByCategoryActionPerformed
 
     private void MenuItemOPenFileActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_MenuItemOPenFileActionPerformed
     {//GEN-HEADEREND:event_MenuItemOPenFileActionPerformed
-        try
+        try // Start of a try-catch block to handle potential exceptions
         {
 
-            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\sofas.csv");
-//            //File archivo = new File("C:\\\\Test\\\\emilioAtenas.jpg");
-//            
-            if (archivo.exists())
+            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\sofas.csv");// Create a File object representing the specified CSV file.
+
+            if (archivo.exists())// Check if the file exists
             {
-                Desktop.getDesktop().open(archivo);
+                Desktop.getDesktop().open(archivo);// If the file exists, open it using the default application associated with its file type.
             }
-            else
+            else// If the file does not exist
             {
-                System.out.println("El archivo no existe.");
+                System.out.println("El archivo no existe.");// Print a message to the console indicating that the file does not exist.
             }
 
-//            Runtime.getRuntime().exec("rundll32 url.dll,  FileProtocolHandler" + "C:\\Test\\emilioAtenas.jpg");
-//            
-//            JOptionPane.showMessageDialog(null, "The file  was open successfully!");
         }
-        catch (Exception e)
+        catch (Exception e) // Catch any exceptions that might occur
         {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());// Display an error message dialog with the exception message.
         }
     }//GEN-LAST:event_MenuItemOPenFileActionPerformed
 
     private void menuHelpActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_menuHelpActionPerformed
     {//GEN-HEADEREND:event_menuHelpActionPerformed
-       
+
     }//GEN-LAST:event_menuHelpActionPerformed
 
     private void menuitemUserGuideActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_menuitemUserGuideActionPerformed
     {//GEN-HEADEREND:event_menuitemUserGuideActionPerformed
-         try
+        try // Start of a try-catch block to handle potential exceptions
         {
+            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\src\\MainGUI\\SofaUserGuide.pdf"); // Create a File object representing the user guide PDF file.
 
-            File archivo = new File("C:\\Users\\Emilio\\Documents\\GitHub\\CS5054AdvancedProgrammingandTechnologiesSpring2024-25\\SSIS\\src\\MainGUI\\SofaUserGuide.pdf");
-//            //File archivo = new File("C:\\\\Test\\\\emilioAtenas.jpg");
-//            
-            if (archivo.exists())
+            if (archivo.exists()) // Check if the file exists.
             {
-                Desktop.getDesktop().open(archivo);
+                Desktop.getDesktop().open(archivo); // If the file exists, open it using the default application associated with PDF files.
             }
-            else
+            else // If the file does not exist.
             {
-                System.out.println("El archivo no existe.");
+                System.out.println("El archivo no existe."); // Print a message to the console indicating that the file does not exist.
             }
-
-//            Runtime.getRuntime().exec("rundll32 url.dll,  FileProtocolHandler" + "C:\\Test\\emilioAtenas.jpg");
-//            
-//            JOptionPane.showMessageDialog(null, "The file  was open successfully!");
         }
-        catch (Exception e)
+        catch (Exception e) // Catch any exceptions that might occur.
         {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage()); // Display an error message dialog with the exception message.
         }
     }//GEN-LAST:event_menuitemUserGuideActionPerformed
 
-    // Add a new sofa tot he table
+    // Add a new sofa to the table
     private void addNewSofa()
     {
+
+        // Retrieve and trim input values
+        String sofaID = txtSofaId.getText().trim();
+        String sofaName = txtSofaName.getText().trim();
+        String category = cbCategory.getSelectedItem().toString();
+        String color = getSelectedColor().trim();
+        String priceText = txtPriice.getText().trim(); // Assuming 'txtPrice' is the correct variable name
+        double price;
+
+        // Input Validation
+        if (sofaID.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a Sofa ID.");
+            return;
+        }
+
+        if (sofaName.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a Sofa Name.");
+            return;
+        }
+
+        if (color.equals("No color selected"))
+        {
+            JOptionPane.showMessageDialog(null, "Please select a Color.");
+            return;
+        }
+
+        if (priceText.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a valid Price.");
+            return;
+        }
+
+        // Validate price input
         try
         {
-            String sofaID = txtSofaId.getText().trim();
-            String sofaName = txtSofaName.getText().trim();
-            String category = cbCategory.getSelectedItem().toString();
-            String color = getSelectedColor().trim();
-            double price = Double.parseDouble(txtPriice.getText());
-
-            // Validate inputs
-            if (sofaID.isEmpty() || sofaName.isEmpty() || color.isEmpty() || price <= 0)
+            price = Double.parseDouble(priceText);
+            if (price <= 0)
             {
-                JOptionPane.showMessageDialog(null, "Please fill in all fields correctly.");
+                JOptionPane.showMessageDialog(null, "Price must be greater than zero.");
                 return;
             }
+        }
+        catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value.");
+            return;
+        }
 
-            // Validate numeric price
-            try
-            {
-                price = Double.parseDouble(txtPriice.getText().trim());
-                if (price <= 0)
-                {
-                    JOptionPane.showMessageDialog(null, "Price must be greater than zero..");
-                    return;
-
-                }
-            }
-            catch (NumberFormatException e)
-            {
-                JOptionPane.showMessageDialog(null, "Invalid price format. Enter a numeric value.");
-
-            }
-
-            // Create new sofa object
+        // Add new sofa
+        try
+        {
             Sofa newSofa = new Sofa(sofaID, category, sofaName, color, price);
-            sofaList.add(newSofa); // Add to ArrayList
+            sofaList.add(newSofa); // Add to the list
 
-            //Add sofa to the table
+            // Add sofa to the table
             TableModel.addRow(new Object[]
             {
-                newSofa.getSofaID(), newSofa.getCategory(), newSofa.getSofaName(), newSofa.getColor(), newSofa.getPrice()
+                newSofa.getSofaID(), newSofa.getCategory(), newSofa.getSofaName(),
+                newSofa.getColor(), newSofa.getPrice()
             });
 
             JOptionPane.showMessageDialog(null, "New sofa added successfully.");
 
             // Clear input fields
-            clearFileds();
+            clearFileds(); // Assuming this method clears text fields
 
-            // Clear input fields
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null, "An Error ocurred while adding the sofa.");
+            JOptionPane.showMessageDialog(null, "An error occurred while adding the sofa: " + e.getMessage());
         }
     }
 
-    // Methos to Get the selected color from the radio buttons
+    // Method to get the selected color from the radio buttons
     private String getSelectedColor()
     {
+        // Check which radio button is selected and return the corresponding color
         if (rbRedColor.isSelected())
         {
             return "Red";
@@ -839,50 +864,51 @@ public class SSInfo extends javax.swing.JFrame
         }
         else
         {
-            return " ";
+            return "No color selected"; // Return meaningful feedback if no selection is made
         }
     }
 
+    // Method to Clear fields
     private void clearFileds()
     {
-        txtPriice.setText("");
-        txtSofaId.setText("");
-        txtSofaName.setText("");
-        txtSearchByPrice.setText("");
-        buttonGroup1.clearSelection();
-        cbCategory.setSelectedIndex(0);
-        cbSearchCategory.setSelectedItem(0);
+        txtPriice.setText(""); // Clear the text in the price text field
+        txtSofaId.setText(""); // Clear the text in the sofa ID text field
+        txtSofaName.setText(""); // Clear the text in the sofa name text field
+        txtSearchByPrice.setText(""); // Clear the text in the search by price text field
+        buttonGroup1.clearSelection(); // Clear the selection of the radio buttons in buttonGroup1
+        cbCategory.setSelectedIndex(0); // Set the selected index of the category combo box to the first item (index 0)
+        cbSearchCategory.setSelectedItem(0); //Set the selected item of the search category combo box to the item at index 0.
     }
 
     // Preload sofa Data
     private void preloadSofas()
     {
-        sofaList.add(new Sofa("S01", "Armchair Sofa", "High Back", "Red", 250.0));
-        sofaList.add(new Sofa("S02", "Armchair Sofa", "Wingback", "Blue", 300.0));
+        sofaList.add(new Sofa("S01", "Armchair Sofa", "High Back", "Red", 250.0)); // Add a new Sofa object to the sofaList with specific data
+        sofaList.add(new Sofa("S02", "Armchair Sofa", "Wingback", "Blue", 300.0)); // Add another Sofa object to the sofaList
 
-        sofaList.add(new Sofa("S03", "Loveseat Sofa", "Modern Loveseat", "Yellow", 400.0));
-        sofaList.add(new Sofa("S04", "Loveseat Sofa", "Classic Loveseat", "Red", 350.0));
+        sofaList.add(new Sofa("S03", "Loveseat Sofa", "Modern Loveseat", "Yellow", 400.0)); // Add a Sofa object for Loveseat category
+        sofaList.add(new Sofa("S04", "Loveseat Sofa", "Classic Loveseat", "Red", 350.0)); // Add another Loveseat Sofa object
 
-        sofaList.add(new Sofa("S05", "Sofa Bed", "Folding Bed", "Blue", 500.0));
-        sofaList.add(new Sofa("S06", "Sofa Bed", "Pull-out Bed", "Yellow", 600.0));
+        sofaList.add(new Sofa("S05", "Sofa Bed", "Folding Bed", "Blue", 500.0)); // Add a Sofa object for Sofa Bed category
+        sofaList.add(new Sofa("S06", "Sofa Bed", "Pull-out Bed", "Yellow", 600.0)); // Add another Sofa Bed object
 
-        sofaList.add(new Sofa("S07", "Seater Sofa", "Leather Recliner", "Red", 700.0));
-        sofaList.add(new Sofa("S08", "Seater Sofa", "Fabric Recliner", "Blue", 750.0));
+        sofaList.add(new Sofa("S07", "Seater Sofa", "Leather Recliner", "Red", 700.0)); // Add a Sofa object for Seater Sofa category
+        sofaList.add(new Sofa("S08", "Seater Sofa", "Fabric Recliner", "Blue", 750.0)); // Add another Seater Sofa object
 
-        sofaList.add(new Sofa("S09", "Modular Sofa", "L-Shaped", "Yellow", 900.0));
-        sofaList.add(new Sofa("S10", "Modular Sofa", "U-Shaped", "Red", 950.0));
-        sofaList.add(new Sofa("S11", "Recliner Sofa", "Classic Recliner", "Red", 700.0));
+        sofaList.add(new Sofa("S09", "Modular Sofa", "L-Shaped", "Yellow", 900.0)); // Add a Sofa object for Modular Sofa category
+        sofaList.add(new Sofa("S10", "Modular Sofa", "U-Shaped", "Red", 950.0)); // Add another Modular Sofa object
+        sofaList.add(new Sofa("S11", "Recliner Sofa", "Classic Recliner", "Red", 700.0)); // Add a Sofa object for Recliner Sofa category
     }
 
     // Update Table with data from the Arraylist
     private void updateTable()
     {
-        TableModel.setRowCount(0);
-        for (Sofa sofa : sofaList)
+        TableModel.setRowCount(0); // Clear all existing rows from the TableModel
+        for (Sofa sofa : sofaList) // Iterate through each Sofa object in the sofaList
         {
-            TableModel.addRow(new Object[]
+            TableModel.addRow(new Object[] // Add a new row to the TableModel
             {
-                sofa.getSofaID(), sofa.getCategory(), sofa.getSofaName(), sofa.getColor(), sofa.getPrice()
+                sofa.getSofaID(), sofa.getCategory(), sofa.getSofaName(), sofa.getColor(), sofa.getPrice() // Populate the row with data from the current Sofa object
             });
         }
     }
