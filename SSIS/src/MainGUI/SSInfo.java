@@ -639,55 +639,62 @@ public class SSInfo extends javax.swing.JFrame
     private void btnSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByPriceActionPerformed
     {//GEN-HEADEREND:event_btnSearchByPriceActionPerformed
 
-        double targetPrice;
-        if (txtSearchByPrice.getText().trim().isEmpty()) // Check if the search price text field is empty
+        double targetPrice; // Variable to store the user-entered price
+
+        // Check if the search price text field is empty
+        if (txtSearchByPrice.getText().trim().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please enter a Price"); // Display an error message if the field is empty
-            return; // Exit the method
+            return; // Exit the method to prevent further execution
         }
 
         // Validate price input
         try
         {
-
             targetPrice = Double.parseDouble(txtSearchByPrice.getText().trim()); // Parse the entered price as a double
 
             if (targetPrice <= 0)
-            {
-                JOptionPane.showMessageDialog(null, "Price must be greater than zero.");
-                return;
+            { // Check if the entered price is valid (greater than zero)
+                JOptionPane.showMessageDialog(null, "Price must be greater than zero."); // Show an error message for invalid input
+                return; // Exit the method
             }
         }
         catch (NumberFormatException e)
-        {
-            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value.");
-            return;
+        { // Catch exception if input is not a valid number
+            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value."); // Show error message
+            return; // Exit the method
         }
 
-        Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice)); // Sort the sofaList by price in ascending order
+        // Sort the sofaList by price in ascending order before performing binary search
+        Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice));
 
-        int low = 0; // Initialize the lower bound of the search
-        int high = sofaList.size() - 1; // Initialize the upper bound of the search
-        while (low <= high) // Start the binary search loop
+        int low = 0; // Initialize the lower bound of the binary search
+        int high = sofaList.size() - 1; // Initialize the upper bound of the binary search
+
+        // Perform binary search to find a sofa with the given price
+        while (low <= high)
         {
             int mid = (low + high) / 2; // Calculate the middle index
-            Sofa midSofa = sofaList.get(mid); // Get the Sofa object at the middle index
+            Sofa midSofa = sofaList.get(mid); // Retrieve the Sofa object at the middle index
 
-            if (midSofa.getPrice() == targetPrice) // Check if the middle sofa's price matches the target price
-            {
-                JOptionPane.showMessageDialog(null, "Found: " + midSofa.getCategory() + "  - " + midSofa.getSofaName()); // Display a message with the found sofa's details
-                return; // Exit the method
+            if (midSofa.getPrice() == targetPrice)
+            { // If the price matches the target price
+                // Display a message with the found sofa's details
+                JOptionPane.showMessageDialog(null, "Found: " + midSofa.getCategory() + "  - " + midSofa.getSofaName());
+                return; // Exit the method since the sofa is found
             }
-            else if (midSofa.getPrice() < targetPrice) // If the middle sofa's price is less than the target price
-            {
-                low = mid + 1; // Update the lower bound to search in the right half
+            else if (midSofa.getPrice() < targetPrice)
+            { // If the middle price is less than the target
+                low = mid + 1; // Search in the right half
             }
-            else // If the middle sofa's price is greater than the target price
-            {
-                high = mid - 1; // Update the upper bound to search in the left half
+            else
+            { // If the middle price is greater than the target
+                high = mid - 1; // Search in the left half
             }
         }
-        JOptionPane.showMessageDialog(null, "No sofa found with that Price."); // Display a message if no sofa is found
+
+        // If no sofa is found, display an appropriate message
+        JOptionPane.showMessageDialog(null, "No sofa found with that Price.");
     }//GEN-LAST:event_btnSearchByPriceActionPerformed
 
     private void txtSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtSearchByPriceActionPerformed
@@ -768,80 +775,90 @@ public class SSInfo extends javax.swing.JFrame
         }
     }//GEN-LAST:event_menuitemUserGuideActionPerformed
 
-    // Add a new sofa to the table
+    // Method to add a new sofa to the table
     private void addNewSofa()
     {
+        // Retrieve and trim input values to remove unnecessary spaces
+        String sofaID = txtSofaId.getText().trim(); // Get the Sofa ID input
+        String sofaName = txtSofaName.getText().trim(); // Get the Sofa Name input
+        String category = cbCategory.getSelectedItem().toString(); // Get the selected category from the combo box
+        String color = getSelectedColor().trim(); // Get the selected color
+        String priceText = txtPriice.getText().trim(); // Get the price input (assuming correct variable name is 'txtPrice')
+        double price; // Variable to store the parsed price
 
-        // Retrieve and trim input values
-        String sofaID = txtSofaId.getText().trim();
-        String sofaName = txtSofaName.getText().trim();
-        String category = cbCategory.getSelectedItem().toString();
-        String color = getSelectedColor().trim();
-        String priceText = txtPriice.getText().trim(); // Assuming 'txtPrice' is the correct variable name
-        double price;
-
-        // Input Validation
+        // === Input Validation ===
+        // Validate if Sofa ID is provided
         if (sofaID.isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Please enter a Sofa ID.");
-            return;
+            JOptionPane.showMessageDialog(null, "Please enter a Sofa ID."); // Show an error message if empty
+            return; // Exit the method
         }
 
+        // Validate if Sofa Name is provided
         if (sofaName.isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Please enter a Sofa Name.");
-            return;
+            JOptionPane.showMessageDialog(null, "Please enter a Sofa Name."); // Show an error message if empty
+            return; // Exit the method
         }
 
+        // Validate if a color is selected
         if (color.equals("No color selected"))
         {
-            JOptionPane.showMessageDialog(null, "Please select a Color.");
-            return;
+            JOptionPane.showMessageDialog(null, "Please select a Color."); // Show an error message if no color is selected
+            return; // Exit the method
         }
 
+        // Validate if price input is not empty
         if (priceText.isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Please enter a valid Price.");
-            return;
+            JOptionPane.showMessageDialog(null, "Please enter a valid Price."); // Show an error message if empty
+            return; // Exit the method
         }
 
-        // Validate price input
+        // === Validate price input ===
         try
         {
-            price = Double.parseDouble(priceText);
+            price = Double.parseDouble(priceText); // Attempt to convert price text to a double
+
+            // Ensure the price is greater than zero
             if (price <= 0)
             {
-                JOptionPane.showMessageDialog(null, "Price must be greater than zero.");
-                return;
+                JOptionPane.showMessageDialog(null, "Price must be greater than zero."); // Show an error if price is invalid
+                return; // Exit the method
             }
         }
         catch (NumberFormatException e)
         {
+            // Handle cases where the input is not a valid number
             JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value.");
-            return;
+            return; // Exit the method
         }
 
-        // Add new sofa
+        // === Add new sofa to the system ===
         try
         {
+            // Create a new Sofa object with provided details
             Sofa newSofa = new Sofa(sofaID, category, sofaName, color, price);
-            sofaList.add(newSofa); // Add to the list
 
-            // Add sofa to the table
+            // Add the new sofa to the sofaList
+            sofaList.add(newSofa);
+
+            // Add the new sofa details to the table
             TableModel.addRow(new Object[]
             {
                 newSofa.getSofaID(), newSofa.getCategory(), newSofa.getSofaName(),
                 newSofa.getColor(), newSofa.getPrice()
             });
 
-            JOptionPane.showMessageDialog(null, "New sofa added successfully.");
+            JOptionPane.showMessageDialog(null, "New sofa added successfully."); // Show success message
 
-            // Clear input fields
-            clearFileds(); // Assuming this method clears text fields
+            // Clear input fields after successful addition
+            clearFileds(); // Assuming this method resets text fields
 
         }
         catch (Exception e)
         {
+            // Handle any unexpected errors
             JOptionPane.showMessageDialog(null, "An error occurred while adding the sofa: " + e.getMessage());
         }
     }
@@ -849,22 +866,22 @@ public class SSInfo extends javax.swing.JFrame
     // Method to get the selected color from the radio buttons
     private String getSelectedColor()
     {
-        // Check which radio button is selected and return the corresponding color
+        // Check which radio button is selected and return the corresponding color name
         if (rbRedColor.isSelected())
         {
-            return "Red";
+            return "Red"; // Return "Red" if the red radio button is selected
         }
         else if (rbBlueColor.isSelected())
         {
-            return "Blue";
+            return "Blue"; // Return "Blue" if the blue radio button is selected
         }
         else if (rbYellowColor.isSelected())
         {
-            return "Yellow";
+            return "Yellow"; // Return "Yellow" if the yellow radio button is selected
         }
         else
         {
-            return "No color selected"; // Return meaningful feedback if no selection is made
+            return "No color selected"; // Return this message if no color is chosen
         }
     }
 
