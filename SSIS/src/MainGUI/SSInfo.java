@@ -481,7 +481,7 @@ public class SSInfo extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel10)
-                .addGap(297, 297, 297)
+                .addGap(322, 322, 322)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
@@ -638,21 +638,16 @@ public class SSInfo extends javax.swing.JFrame
     // Method to search for a sofa by proce using Binary Search.       
     private void btnSearchByPriceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSearchByPriceActionPerformed
     {//GEN-HEADEREND:event_btnSearchByPriceActionPerformed
-
         double targetPrice; // Variable to store the user-entered price
-
         // Check if the search price text field is empty
         if (txtSearchByPrice.getText().trim().isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Please enter a Price"); // Display an error message if the field is empty
             return; // Exit the method to prevent further execution
-        }
-
-        // Validate price input
+        } // Validate price input
         try
         {
             targetPrice = Double.parseDouble(txtSearchByPrice.getText().trim()); // Parse the entered price as a double
-
             if (targetPrice <= 0)
             { // Check if the entered price is valid (greater than zero)
                 JOptionPane.showMessageDialog(null, "Price must be greater than zero."); // Show an error message for invalid input
@@ -663,20 +658,15 @@ public class SSInfo extends javax.swing.JFrame
         { // Catch exception if input is not a valid number
             JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a numeric value."); // Show error message
             return; // Exit the method
-        }
-
-        // Sort the sofaList by price in ascending order before performing binary search
+        } // Sort the sofaList by price in ascending order before performing binary search
         Collections.sort(sofaList, Comparator.comparingDouble(Sofa::getPrice));
-
         int low = 0; // Initialize the lower bound of the binary search
         int high = sofaList.size() - 1; // Initialize the upper bound of the binary search
-
         // Perform binary search to find a sofa with the given price
         while (low <= high)
         {
             int mid = (low + high) / 2; // Calculate the middle index
             Sofa midSofa = sofaList.get(mid); // Retrieve the Sofa object at the middle index
-
             if (midSofa.getPrice() == targetPrice)
             { // If the price matches the target price
                 // Display a message with the found sofa's details
@@ -691,9 +681,7 @@ public class SSInfo extends javax.swing.JFrame
             { // If the middle price is greater than the target
                 high = mid - 1; // Search in the left half
             }
-        }
-
-        // If no sofa is found, display an appropriate message
+        } // If no sofa is found, display an appropriate message
         JOptionPane.showMessageDialog(null, "No sofa found with that Price.");
     }//GEN-LAST:event_btnSearchByPriceActionPerformed
 
@@ -739,7 +727,7 @@ public class SSInfo extends javax.swing.JFrame
             }
             else// If the file does not exist
             {
-                System.out.println("El archivo no existe.");// Print a message to the console indicating that the file does not exist.
+                JOptionPane.showMessageDialog(null, "The file does not exist.");// Display a message to the console indicating that the file does not exist.
             }
 
         }
@@ -766,7 +754,7 @@ public class SSInfo extends javax.swing.JFrame
             }
             else // If the file does not exist.
             {
-                System.out.println("El archivo no existe."); // Print a message to the console indicating that the file does not exist.
+                JOptionPane.showMessageDialog(null, "The file does not exist.");// Display a message to the console indicating that the file does not exist.
             }
         }
         catch (Exception e) // Catch any exceptions that might occur.
